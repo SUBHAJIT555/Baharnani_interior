@@ -26,7 +26,7 @@ const ICON_PLACEHOLDER = "💡";
 
 /** Desktop mega-menu card — border + radius (viewport in navigation-menu.tsx is transparent on purpose) */
 const megaMenuPanelClass =
-  "overflow-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-md";
+  "overflow-hidden rounded-xl border border-border bg-popover text-popover-foreground ";
 
 /** Header CTAs — pill shape, clearer hierarchy than default shadcn */
 const navCtaOutlineClass =
