@@ -6,12 +6,12 @@ import { servicePages } from "@/lib/site-data";
 export default function Home() {
   return (
     <div className="space-y-10">
-      <PageHero
+      {/* <PageHero
         title="Villa Interior Design and Fit-Out in Dubai"
         description="A clean starter website with all key routes ready for your content, SEO, and design system."
-      />
+      /> */}
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <SectionCard
           title="End-to-End Services"
           text="From concept design to turnkey fit-out execution for villas, apartments, and offices."
@@ -41,7 +41,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
