@@ -113,18 +113,18 @@ export function MegaNavHeader() {
       <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-3 md:px-4">
         <div className="flex min-w-0 flex-1 items-center gap-3 md:gap-5">
           <SiteLogoLink />
-          <NavigationMenu className="hidden shrink-0 md:flex">
+          <NavigationMenu className="hidden shrink-0 font-recia font-semibold md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className="px-4">
-                  <Link href="/" className="rounded-md p-2 hover:bg-accent">
+                  <Link href="/" className="rounded-md p-2 font-recia font-semibold hover:bg-accent">
                     Home
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className="px-4">
-                  <Link href="/services" className="rounded-md p-2 hover:bg-accent">
+                  <Link href="/services" className="rounded-md p-2 font-recia font-semibold hover:bg-accent">
                     Services
                   </Link>
                 </NavigationMenuLink>
@@ -210,7 +210,7 @@ export function MegaNavHeader() {
         </Button>
       </nav>
       <MobileMenu open={open} className="flex flex-col justify-between gap-2 overflow-y-auto">
-        <NavigationMenu className="max-w-full">
+        <NavigationMenu className="max-w-full font-recia font-semibold">
           <div className="flex w-full flex-col gap-y-2">
             <MobileMenuRowLink href="/" title="Home" onNavigate={() => setOpen(false)}>
               <MobileMenuHomeIcon />
@@ -218,11 +218,11 @@ export function MegaNavHeader() {
             <MobileMenuRowLink href="/services" title="Services" onNavigate={() => setOpen(false)}>
               <MobileMenuServicesHubIcon />
             </MobileMenuRowLink>
-            <span className="text-sm font-medium text-muted-foreground">All services</span>
+            <span className="text-sm font-recia font-semibold text-muted-foreground">All services</span>
             {productLinks.map((link) => (
               <ListItem key={link.href} {...link} />
             ))}
-            <span className="text-sm font-medium text-muted-foreground">Company</span>
+            <span className="text-sm font-recia font-semibold text-muted-foreground">Company</span>
             {companyLinks.map((link) => (
               <ListItem key={link.href} {...link} />
             ))}
