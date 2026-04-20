@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { FloatingActions } from "@/components/ui/floating-actions";
 
 export const metadata: Metadata = {
   title: "Villa Interior Design Dubai",
@@ -20,11 +21,13 @@ export default function RootLayout({
         className="flex min-h-full flex-col bg-background text-foreground"
         suppressHydrationWarning
       >
+        <div id="page-scroll-threshold" className="absolute top-0 h-px w-px" aria-hidden />
         <SiteHeader />
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 lg:px-8">
           {children}
         </main>
         <SiteFooter />
+        <FloatingActions />
       </body>
     </html>
   );

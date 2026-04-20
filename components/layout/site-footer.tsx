@@ -4,6 +4,9 @@ import { SiteLogoLink } from "@/components/branding/site-logo";
 import { legalPages, mainNav, servicePages } from "@/lib/site-data";
 
 const COMPANY_NAME = "Baharnani Interior";
+/** Legal entity shown in the copyright line (footer strip). */
+const COMPANY_LEGAL_NAME = "Baharnani Advertising L.L.C.";
+const CODECOBBLE_URL = "https://codecobble.com";
 const COMPANY_TAGLINE =
   "Dubai-based interior design and fit-out studio delivering villas, apartments, and commercial spaces with tailored layouts, premium finishes, and turnkey delivery across the UAE.";
 
@@ -11,7 +14,7 @@ function FooterHeading({ id, children }: { id: string; children: React.ReactNode
   return (
     <h2
       id={id}
-      className="border-b border-zinc-200 pb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-700"
+      className="border-b border-zinc-200 pb-2 text-[11px] font-semibold font-recia uppercase tracking-[0.2em] text-zinc-900"
     >
       {children}
     </h2>
@@ -22,7 +25,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-1.5 text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+      className="group inline-flex items-center gap-1.5 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950"
     >
       <span className="min-w-0">{children}</span>
       <span
@@ -67,12 +70,35 @@ export function SiteFooter() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-0 lg:gap-y-14">
           <div className="lg:col-span-4 lg:border-r lg:border-zinc-200 lg:pr-10">
             <div className="flex flex-col gap-5">
-              <div className="inline-flex w-fit rounded-2xl bg-white">
+              <div className="inline-flex w-fit">
                 <SiteLogoLink className="p-0 hover:opacity-100" imageAlt="Baharnani Interior logo" />
               </div>
               <div>
-                <p className="text-lg font-semibold tracking-tight text-zinc-950">{COMPANY_NAME}</p>
-                <p className="mt-3 max-w-lg text-sm leading-relaxed text-zinc-600">{COMPANY_TAGLINE}</p>
+                <p className="text-lg font-semibold font-recia tracking-tight text-zinc-950">{COMPANY_NAME}</p>
+                <p className="mt-3 max-w-lg text-sm font-medium leading-relaxed text-zinc-600">{COMPANY_TAGLINE}</p>
+                <div className="mt-6 max-w-md rounded-2xl  backdrop-blur-sm">
+                  <p className="text-xs font-semibold uppercase font-recia tracking-[0.18em] text-zinc-800">Newsletter</p>
+                  <p className="mt-2 text-sm text-zinc-600">
+                    Get design tips, trend updates, and project insights in your inbox.
+                  </p>
+                  <form className="mt-3 flex flex-col gap-2 sm:flex-row" action="#">
+                    <label htmlFor="newsletter-email" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="newsletter-email"
+                      type="email"
+                      placeholder="Enter your email"
+                      className="h-10 w-full rounded-xl border border-zinc-300 bg-white px-3 text-sm text-zinc-800 placeholder:text-zinc-400 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-300"
+                    />
+                    <button
+                      type="submit"
+                      className="h-10 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+                    >
+                      Subscribe
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -117,20 +143,48 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-zinc-200 pt-8 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-          <p className="leading-relaxed">
-            © {year} {COMPANY_NAME}. <span className="text-zinc-400">All rights reserved.</span>
-          </p>
-          <p className="sm:text-right">
-            Developed by{" "}
+        <div className="mt-14 border-t border-zinc-200 pt-8 text-center text-xs md:text-sm leading-relaxed text-zinc-600">
+          <p className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-1 gap-y-1 font-switzer">
+            <span>© {year}</span>{" "}
+            <Link
+              href="/"
+              className="font-medium text-teal-700 underline-offset-2 transition hover:text-teal-800 hover:underline"
+            >
+              {COMPANY_LEGAL_NAME}
+            </Link>
+            <span>. All Rights Reserved. Made with </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={16}
+              height={16}
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="inline-block shrink-0 text-red-600 align-[-0.15em]"
+              role="img"
+              aria-label="love"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" />
+            </svg>
+            <span> by </span>
             <a
-              href="https://codecoccle.com"
-              className="font-medium text-zinc-700 underline-offset-4 transition hover:text-amber-800 hover:underline"
+              href={CODECOBBLE_URL}
+              className="font-medium text-teal-700 underline-offset-2 transition hover:text-teal-800 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
-              codecoccle
+              CodeCobble
             </a>
+            <span className="text-zinc-400" aria-hidden>
+              {" "}
+              |{" "}
+            </span>
+            <Link
+              href="/site-map"
+              className="font-medium text-zinc-600 underline-offset-2 transition hover:text-zinc-900 hover:underline"
+            >
+              Site Map
+            </Link>
           </p>
         </div>
       </div>

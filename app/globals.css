@@ -3,10 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ---- Montserrat (variable) ---- */
+/* ---- Switzer (variable) ---- */
 @font-face {
-  font-family: "Montserrat";
-  src: url("/assets/fonts/Montserrat-Variable.woff2") format("woff2");
+  font-family: "Switzer";
+  src: url("/assets/fonts/Switzer-Variable.woff") format("woff");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -22,13 +22,13 @@
 }
 
 /*
- * Tailwind font utilities: font-montserrat | font-recia
+ * Tailwind font utilities: font-switzer | font-recia
  * Weights (with variable fonts): font-light … font-black as usual.
  *
  * Colors below are neutral placeholders — swap when you share brand tokens.
  */
 @theme inline {
-  --font-montserrat: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-switzer: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-recia: "Recia", ui-serif, Georgia, "Times New Roman", serif;
 
   --color-background: #ffffff;
@@ -58,5 +58,5 @@
 }
 
 body {
-  @apply bg-background text-foreground font-montserrat antialiased;
+  @apply bg-background text-foreground font-switzer antialiased;
 }
