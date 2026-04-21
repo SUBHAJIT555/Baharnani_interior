@@ -106,8 +106,8 @@ export function MegaNavHeader() {
 
   return (
     <header
-      className={cn("sticky top-0 z-50 w-full border-b border-transparent", {
-        "border-border bg-background/95 backdrop-blur-lg supports-backdrop-filter:bg-background/50": scrolled,
+      className={cn("fixed top-0 z-50 w-full border-b border-transparent bg-transparent", {
+        "border-white/20 bg-transparent backdrop-blur-lg supports-backdrop-filter:bg-white/10": scrolled,
       })}
     >
       <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-3 md:px-4">

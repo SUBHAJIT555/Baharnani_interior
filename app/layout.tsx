@@ -17,10 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       {/* suppressHydrationWarning: extensions (e.g. ColorZilla) may inject attrs like cz-shortcut-listen on <body> */}
-      <body
-        className="flex min-h-full flex-col bg-background text-foreground"
-        suppressHydrationWarning
-      >
+      <body className="flex min-h-full flex-col overflow-x-hidden bg-background text-foreground" suppressHydrationWarning>
         <div id="page-scroll-threshold" className="absolute top-0 h-px w-px" aria-hidden />
         <SiteHeader />
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 lg:px-8">
