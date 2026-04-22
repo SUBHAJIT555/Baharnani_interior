@@ -281,7 +281,10 @@ export default function ServicesHomeOverview() {
         <div className="mt-10">
 
           {/* Mobile swiper */}
-          <div ref={mobileSwiperRef} className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:px-6 md:hidden">
+          <div
+            ref={mobileSwiperRef}
+            className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-visible px-4 pt-3 pb-2 sm:px-6 md:hidden"
+          >
             {currentSwiperCards.map((card, index) => (
               <motion.article
                 key={card.title}
@@ -319,8 +322,10 @@ export default function ServicesHomeOverview() {
                     behavior: "smooth",
                   });
                 }}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  mobileActiveIndex === index ? "w-6 bg-[#0000FF]" : "w-2.5 bg-background"
+                className={`rounded-full border border-zinc-400 transition-all duration-300 ${
+                  mobileActiveIndex === index
+                    ? "h-3 w-7 border-[#0000FF] bg-[#0000FF]"
+                    : "h-3 w-3 bg-zinc-500/70"
                 }`}
               />
             ))}
@@ -355,7 +360,7 @@ export default function ServicesHomeOverview() {
                   </motion.article>
                 ))}
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-4 md:gap-8">
                 {currentSwiperCards.map((card, index) => (
                   <motion.article
                     key={`desktop-b-${card.title}`}
@@ -387,11 +392,69 @@ export default function ServicesHomeOverview() {
           <div className="mt-8 flex justify-center">
             <motion.button
               type="button"
-              whileHover={{ scale: 1.03 }}
+              
               whileTap={{ scale: 0.98 }}
-              className="h-11 rounded-full bg-[#0000FF] px-7 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-blue-700 md:h-12 md:px-8 md:text-base"
+              className="group flex h-11 items-center gap-2 rounded-full bg-[#0000FF] px-7 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-blue-700 md:h-12 md:px-8 md:text-base cursor-pointer"
+              onClick={() => {
+                window.dispatchEvent(new Event("openInquiryModal"));
+              }}
             >
-              Get Custom Office Plan -&gt;
+              Get Custom Office Plan
+              <motion.svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden
+              >
+                <motion.path
+                  d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
+                  transition={{
+                    duration: 3.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    times: [0, 0.35, 0.72, 1],
+                  }}
+                />
+                <motion.path
+                  d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
+                  transition={{
+                    duration: 3.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    times: [0, 0.35, 0.72, 1],
+                    delay: 0.12,
+                  }}
+                />
+                <motion.path
+                  d="M9.7 17l4.6 0"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
+                  transition={{
+                    duration: 3.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    times: [0, 0.35, 0.72, 1],
+                    delay: 0.24,
+                  }}
+                />
+              </motion.svg>
             </motion.button>
           </div>
         </div>

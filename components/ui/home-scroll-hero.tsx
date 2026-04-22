@@ -24,6 +24,12 @@ export function HomeScrollHero() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitState, setSubmitState] = useState<"idle" | "error">("idle");
 
+  const openInquiryModal = () => {
+    setSubmitState("idle");
+    setIsSuccessModalOpen(false);
+    setIsModalOpen(true);
+  };
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -33,6 +39,12 @@ export function HomeScrollHero() {
     const timeout = setTimeout(() => setIsSuccessModalOpen(false), 10000);
     return () => clearTimeout(timeout);
   }, [isSuccessModalOpen]);
+
+  useEffect(() => {
+    const handleOpenInquiryModal = () => openInquiryModal();
+    window.addEventListener("openInquiryModal", handleOpenInquiryModal);
+    return () => window.removeEventListener("openInquiryModal", handleOpenInquiryModal);
+  }, []);
 
   return (
     <>
@@ -135,11 +147,7 @@ export function HomeScrollHero() {
                 <Button
                   type="button"
                   className="group h-11 w-full rounded-full bg-[#0000FF] px-6 text-sm font-semibold tracking-wide text-white hover:bg-blue-700 md:h-12 md:w-auto md:px-7 cursor-pointer"
-                  onClick={() => {
-                    setSubmitState("idle");
-                    setIsSuccessModalOpen(false);
-                    setIsModalOpen(true);
-                  }}
+                  onClick={openInquiryModal}
                 >
                   Talk to Our Experts Today
                   <motion.svg
