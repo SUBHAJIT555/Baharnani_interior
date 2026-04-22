@@ -41,19 +41,19 @@ export default function WhyItsMatterHome() {
       <div className="w-full md:hidden">
         <h2 className="mb-8 font-recia text-3xl font-semibold text-zinc-900">Why It Matters</h2>
         <div className="space-y-6">
-          <article className="grid gap-5 rounded-3xl border border-zinc-300/80 bg-white p-4 shadow-xl">
+          <article className="grid gap-5 rounded-3xl border border-zinc-300 bg-neutral-100 p-4 ring-1 ring-zinc-200 ring-offset-2 md:ring-offset-4">
             <div className="overflow-hidden rounded-2xl">
               <img src={cards[0].image} alt={cards[0].alt} className="h-full min-h-[220px] w-full object-cover" />
             </div>
             <div className="flex flex-col justify-center">
-              <h3 className="font-recia text-5xl font-semibold leading-tight text-zinc-900">{cards[0].title}</h3>
+              <h3 className="font-recia text-4xl font-semibold leading-tight text-zinc-900">{cards[0].title}</h3>
               <p className="mt-3 text-base leading-8 text-zinc-700">{cards[0].description}</p>
             </div>
           </article>
 
-          <article className="grid gap-5 rounded-3xl border border-black/10 bg-[#e65b2a] p-4 text-white shadow-2xl">
+          <article className="grid gap-5 rounded-3xl border border-black/10 bg-[#e65b2a] p-4 text-white ring-1 ring-[#e65b2a] ring-offset-2 md:ring-offset-4">
             <div className="flex flex-col justify-center">
-              <h3 className="font-recia text-5xl font-semibold leading-tight">{cards[1].title}</h3>
+              <h3 className="font-recia text-4xl font-semibold leading-tight">{cards[1].title}</h3>
               <p className="mt-3 text-base leading-8 text-white/90">{cards[1].description}</p>
             </div>
             <div className="overflow-hidden rounded-2xl">
