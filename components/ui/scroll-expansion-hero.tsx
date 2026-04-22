@@ -15,6 +15,7 @@ interface ScrollExpandMediaProps {
   posterSrc?: string;
   bgImageSrc: string;
   title?: string;
+  subheading?: string;
   date?: string;
   scrollToExpand?: string;
   textBlend?: boolean;
@@ -27,6 +28,7 @@ export default function ScrollExpandMedia({
   posterSrc,
   bgImageSrc,
   title,
+  subheading,
   date,
   scrollToExpand,
   textBlend,
@@ -131,11 +133,15 @@ export default function ScrollExpandMedia({
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
+  const mediaWidth = 360 + scrollProgress * (isMobileState ? 650 : 1250);
   const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
   const firstWord = title ? title.split(' ')[0] : '';
   const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
+  const hasCustomTitleLines = Boolean(title && title.includes('|'));
+  const titleLineOne = hasCustomTitleLines ? title?.split('|')[0].trim() : firstWord;
+  const titleLineTwo = hasCustomTitleLines ? title?.split('|')[1]?.trim() ?? '' : restOfTitle;
+  const subheadingText = subheading ?? date;
   const isPexelsVideoPage = mediaSrc.includes('pexels.com/video/');
 
   const getPexelsEmbedSrc = (url: string) => {
@@ -261,10 +267,13 @@ export default function ScrollExpandMedia({
                 )}
 
                 <div className="relative z-10 mt-4 flex flex-col items-center text-center transition-none">
-                  {date && (
-                    <p className="text-2xl text-blue-200" style={{ transform: `translateX(-${textTranslateX}vw)` }}>
-                      {date}
-                    </p>
+                  {subheadingText && (
+                    <h2
+                      className="text-2xl text-blue-200"
+                      style={{ transform: `translateX(-${textTranslateX}vw)` }}
+                    >
+                      {subheadingText}
+                    </h2>
                   )}
                   {scrollToExpand && (
                     <p className="text-center font-medium text-blue-200" style={{ transform: `translateX(${textTranslateX}vw)` }}>
@@ -279,23 +288,22 @@ export default function ScrollExpandMedia({
                   textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
                 }`}
               >
-                <h2
-                  className="text-4xl font-bold font-recia text-blue-200 transition-none md:text-6xl lg:text-8xl"
-                  style={{ transform: `translateX(-${textTranslateX}vw)` }}
-                >
-                  {firstWord}
-                </h2>
-                <h2
-                  className="text-center text-4xl font-recia font-bold text-blue-200 transition-none md:text-6xl lg:text-8xl"
-                  style={{ transform: `translateX(${textTranslateX}vw)` }}
-                >
-                  {restOfTitle}
-                </h2>
+                <h1 className="text-4xl font-bold font-recia text-blue-200 transition-none md:text-6xl lg:text-7xl">
+                  <span className="block" style={{ transform: `translateX(-${textTranslateX}vw)` }}>
+                    {titleLineOne}
+                  </span>
+                  <span
+                    className="block text-center"
+                    style={{ transform: `translateX(${textTranslateX}vw)` }}
+                  >
+                    {titleLineTwo}
+                  </span>
+                </h1>
               </div>
             </div>
 
             <section
-              className="flex w-full flex-col px-8 py-10 md:px-16 lg:py-20"
+              className="flex w-full flex-col px-8 pt-2 pb-10 md:px-16 md:pt-4 lg:pt-6 lg:pb-20"
               style={{ opacity: showContent ? 1 : 0, transition: 'opacity 700ms ease' }}
             >
               {children}

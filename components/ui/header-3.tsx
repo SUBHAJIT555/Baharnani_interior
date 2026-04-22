@@ -32,7 +32,7 @@ const megaMenuPanelClass =
 const navCtaOutlineClass =
   "h-10 rounded-full border-zinc-200/90 bg-white/90 px-6 text-sm font-semibold tracking-tight text-zinc-800 shadow-sm transition-all duration-200 hover:border-zinc-300 hover:bg-white hover:text-zinc-950 hover:shadow-md active:scale-[0.98]";
 const navCtaPrimaryClass =
-  "h-10 rounded-full border border-zinc-900/20 bg-zinc-900 px-6 text-sm font-semibold tracking-tight text-zinc-50 shadow-md transition-all duration-200 hover:bg-zinc-800 hover:shadow-lg active:scale-[0.98]";
+  "h-10 rounded-full border border-blue-700/30 bg-[#0000FF] px-6 text-sm font-semibold tracking-tight text-zinc-50 shadow-md transition-all duration-200 hover:bg-blue-700 hover:shadow-lg active:scale-[0.98]";
 
 type LinkItem = {
   title: string;

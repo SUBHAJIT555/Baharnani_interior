@@ -93,7 +93,7 @@ export function SiteFooter() {
                     />
                     <button
                       type="submit"
-                      className="h-10 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+                      className="h-10 rounded-xl bg-[#0000FF] px-4 text-sm font-semibold text-white transition hover:bg-blue-700"
                     >
                       Subscribe
                     </button>
