@@ -6,6 +6,8 @@ import { createPortal } from "react-dom";
 
 import { Button } from "@/components/ui/button";
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
+import Shuffle from "@/components/ui/Shuffle";
+import { ShinyButton } from "@/components/ui/shiny-button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -20,6 +22,7 @@ import { MobileMenuHomeIcon, MobileMenuServicesHubIcon } from "@/components/icon
 import { ServiceMenuIcon } from "@/components/icons/service-menu-icon";
 import { cn } from "@/lib/utils";
 import { legalPages, servicePages } from "@/lib/site-data";
+import GradientText from "./GradientText";
 
 /** Company / legal rows until you add icons */
 const ICON_PLACEHOLDER = "💡";
@@ -34,6 +37,24 @@ const navCtaOutlineClass =
 const navCtaPrimaryClass =
   "h-10 rounded-full border border-blue-700/30 bg-[#0000FF] px-6 text-sm font-semibold tracking-tight text-zinc-50 shadow-md transition-all duration-200 hover:bg-blue-700 hover:shadow-lg active:scale-[0.98]";
 
+const shinyContactStyle: React.CSSProperties = {
+  ["--shiny-cta-bg" as string]: "#ffffff",
+  ["--shiny-cta-bg-subtle" as string]: "#f5f5f5",
+  ["--shiny-cta-fg" as string]: "#111827",
+  ["--shiny-cta-highlight" as string]: "#d4d4d8",
+  ["--shiny-cta-highlight-subtle" as string]: "#ffffff",
+  ["--shiny-cta-dot" as string]: "rgba(17, 24, 39, 0.45)",
+};
+
+const shinyQuoteStyle: React.CSSProperties = {
+  ["--shiny-cta-bg" as string]: "#0000FF",
+  ["--shiny-cta-bg-subtle" as string]: "#1d4ed8",
+  ["--shiny-cta-fg" as string]: "#ffffff",
+  ["--shiny-cta-highlight" as string]: "#60a5fa",
+  ["--shiny-cta-highlight-subtle" as string]: "#bfdbfe",
+  ["--shiny-cta-dot" as string]: "rgba(255, 255, 255, 1)",
+};
+
 type LinkItem = {
   title: string;
   href: string;
@@ -43,17 +64,17 @@ type LinkItem = {
 };
 
 const serviceBlurbs: Record<string, string> = {
-  "villa-interior-design-dubai": "Bespoke layouts, finishes, and styling for Dubai villas.",
-  "apartment-interior-design-dubai": "Space-smart plans for apartments across the city.",
-  "office-interior-design-dubai": "Branded workplaces that support focus and collaboration.",
-  "luxury-interior-design-dubai": "High-end materials, detailing, and curated aesthetics.",
-  "turnkey-fit-out-services-dubai": "Design-to-handover delivery with one accountable team.",
-  "kitchen-fit-out-services-dubai": "Cabinetry, surfaces, lighting, and appliance integration.",
-  "bathroom-renovation-dubai": "Waterproofing, fixtures, and spa-like comfort.",
-  "joinery-custom-furniture-dubai": "Built-ins, wardrobes, and feature joinery made to measure.",
-  "ceiling-lighting-solutions-dubai": "Cove, feature ceilings, and layered lighting schemes.",
-  "flooring-tiling-services-dubai": "Stone, tile, and wood finishes with expert installation.",
-  "interior-design-dubai-marina": "Marina towers: compact luxury with strong sea-city views.",
+  "villa-interior-design": "Bespoke layouts, finishes, and styling for Dubai villas.",
+  "apartment-interior-design": "Space-smart plans for apartments across the city.",
+  "office-interior-design": "Branded workplaces that support focus and collaboration.",
+  "luxury-interior-design": "High-end materials, detailing, and curated aesthetics.",
+  "turnkey-fit-out-services": "Design-to-handover delivery with one accountable team.",
+  "kitchen-fit-out-services": "Cabinetry, surfaces, lighting, and appliance integration.",
+  "bathroom-renovation": "Waterproofing, fixtures, and spa-like comfort.",
+  "joinery-custom-furniture": "Built-ins, wardrobes, and feature joinery made to measure.",
+  "ceiling-lighting-solutions": "Cove, feature ceilings, and layered lighting schemes.",
+  "flooring-tiling-services": "Stone, tile, and wood finishes with expert installation.",
+  "interior-design-marina": "Marina towers: compact luxury with strong sea-city views.",
   "palm-jumeirah-interior-design": "Signature island homes with elevated material palettes.",
   "jvc-interior-design-services": "Family-friendly JVC homes with efficient storage and flow.",
   "arabian-ranches-villa-interiors": "Community villas with warm, timeless interiors.",
@@ -113,24 +134,53 @@ export function MegaNavHeader() {
       <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-3 md:px-4">
         <div className="flex min-w-0 flex-1 items-center gap-3 md:gap-5">
           <SiteLogoLink />
-          <NavigationMenu className="hidden shrink-0 font-recia font-semibold md:flex">
+          <NavigationMenu className="hidden shrink-0 font-semibold md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className="px-4">
-                  <Link href="/" className="rounded-md p-2 font-recia font-semibold hover:bg-accent">
-                    Home
+                  <Link href="/" className="rounded-md p-2 font-semibold hover:bg-accent">
+                    <Shuffle
+                      text="Home"
+                      tag="span"
+                      triggerOnHover
+                      triggerOnce={false}
+                      duration={0.28}
+                      shuffleTimes={2}
+                      maxDelay={0.03}
+                      className="inline-block"
+                    />
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className="px-4">
-                  <Link href="/services" className="rounded-md p-2 font-recia font-semibold hover:bg-accent">
-                    Services
+                  <Link href="/services" className="rounded-md p-2 font-semibold hover:bg-accent">
+                    <Shuffle
+                      text="Services"
+                      tag="span"
+                      triggerOnHover
+                      triggerOnce={false}
+                      duration={0.28}
+                      shuffleTimes={2}
+                      maxDelay={0.03}
+                      className="inline-block"
+                    />
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">All services</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent text-base">
+                  <Shuffle
+                    text="All services"
+                    tag="span"
+                    triggerOnHover
+                    triggerOnce={false}
+                    duration={0.28}
+                    shuffleTimes={2}
+                    maxDelay={0.03}
+                    className="inline-block"
+                  />
+                </NavigationMenuTrigger>
                 <NavigationMenuContent className="border-0 bg-transparent p-0 shadow-none">
                   <div className={cn(megaMenuPanelClass, "w-[min(100vw-2rem,42rem)] sm:w-2xl")}>
                     <ul className="grid max-w-2xl grid-cols-2 gap-1.5 p-1.5">
@@ -142,18 +192,40 @@ export function MegaNavHeader() {
                     </ul>
                     <div className="inline-flex w-full min-w-0 flex-nowrap items-center gap-2 border-t border-border px-2 py-1.5">
                       <div className="size-3 shrink-0 animate-pulse rounded-sm bg-green-600" aria-hidden />
-                      <div className="min-w-0 text-sm text-muted-foreground">
+                      <div className="min-w-0 text-sm text-muted-foreground px-2 py-2">
                         Need guidance?{" "}
                         <Link href="/contact" className="font-medium text-foreground hover:underline">
-                          Request a consultation
+                          <GradientText
+                            colors={["#0f172a", "#2563eb", "#1d4ed8", "#0f172a"]}
+                            animationSpeed={3}
+                            direction="horizontal"
+                            showBorder={false}
+                            pauseOnHover={false}
+                            yoyo
+                            className="inline"
+                          >
+                            Request a consultation
+                          </GradientText>
                         </Link>
                       </div>
+                 
                     </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent">Company</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent text-base">
+                  <Shuffle
+                    text="Company"
+                    tag="span"
+                    triggerOnHover
+                    triggerOnce={false}
+                    duration={0.28}
+                    shuffleTimes={2}
+                    maxDelay={0.03}
+                    className="inline-block"
+                  />
+                </NavigationMenuTrigger>
                 <NavigationMenuContent className="border-0 bg-transparent p-0 shadow-none">
                   <div className={cn(megaMenuPanelClass, "w-[min(100vw-2rem,36rem)] sm:w-xl")}>
                     <div className="grid max-w-xl grid-cols-2 gap-1.5 p-1.5">
@@ -189,28 +261,36 @@ export function MegaNavHeader() {
           </NavigationMenu>
         </div>
         <div className="hidden items-center gap-2.5 md:flex">
-          <Button variant="outline" className={navCtaOutlineClass} asChild>
-            <Link href="/contact">Contact</Link>
-          </Button>
-          <Button className={navCtaPrimaryClass} asChild>
-            <Link href="/contact">Get a quote</Link>
-          </Button>
+          <Link href="/contact">
+            <ShinyButton className="shiny-cta--compact" style={shinyContactStyle}>
+              Contact
+            </ShinyButton>
+          </Link>
+          <ShinyButton
+            className="shiny-cta--compact"
+            style={shinyQuoteStyle}
+            onClick={() => {
+              window.dispatchEvent(new Event("openInquiryModal"));
+            }}
+          >
+            Get a quote
+          </ShinyButton>
         </div>
         <Button
           size="icon"
           variant="outline"
           onClick={() => setOpen(!open)}
-          className="md:hidden h-11 w-11 min-h-11 min-w-11 shrink-0 rounded-xl p-0 bg-neutral-100 border border-neutral-300 ring-1 ring-neutral-200 ring-offset-2 hover:bg-accent [&_svg]:size-7 [&_svg]:shrink-0"
+          className="md:hidden h-10 w-10 min-h-10 min-w-10 shrink-0 rounded-xl p-0 bg-neutral-100 border border-neutral-300 ring-1 ring-neutral-200 ring-offset-1 hover:bg-accent [&_svg]:size-6 [&_svg]:shrink-0"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label="Toggle menu"
           type="button"
         >
-          <MenuToggleIcon open={open} className="size-7" duration={300} />
+          <MenuToggleIcon open={open} className="size-6" duration={300} />
         </Button>
       </nav>
       <MobileMenu open={open} className="flex flex-col justify-between gap-2 overflow-y-auto">
-        <NavigationMenu className="max-w-full font-recia font-semibold">
+        <NavigationMenu className="max-w-full font-semibold">
           <div className="flex w-full flex-col gap-y-2">
             <MobileMenuRowLink href="/" title="Home" onNavigate={() => setOpen(false)}>
               <MobileMenuHomeIcon />
@@ -218,11 +298,11 @@ export function MegaNavHeader() {
             <MobileMenuRowLink href="/services" title="Services" onNavigate={() => setOpen(false)}>
               <MobileMenuServicesHubIcon />
             </MobileMenuRowLink>
-            <span className="text-sm font-recia font-semibold text-muted-foreground">All services</span>
+            <span className="text-sm font-semibold text-muted-foreground">All services</span>
             {productLinks.map((link) => (
               <ListItem key={link.href} {...link} />
             ))}
-            <span className="text-sm font-recia font-semibold text-muted-foreground">Company</span>
+            <span className="text-sm font-semibold text-muted-foreground">Company</span>
             {companyLinks.map((link) => (
               <ListItem key={link.href} {...link} />
             ))}
@@ -232,12 +312,21 @@ export function MegaNavHeader() {
           </div>
         </NavigationMenu>
         <div className="flex flex-col gap-2.5 px-0.5">
-          <Button variant="outline" className={cn(navCtaOutlineClass, "w-full")} asChild>
-            <Link href="/contact">Contact</Link>
-          </Button>
-          <Button className={cn(navCtaPrimaryClass, "w-full")} asChild>
-            <Link href="/contact">Get a quote</Link>
-          </Button>
+          <Link href="/contact" className="w-full">
+            <ShinyButton className="shiny-cta--compact w-full" style={shinyContactStyle}>
+              Contact
+            </ShinyButton>
+          </Link>
+          <ShinyButton
+            className="shiny-cta--compact w-full"
+            style={shinyQuoteStyle}
+            onClick={() => {
+              setOpen(false);
+              window.dispatchEvent(new Event("openInquiryModal"));
+            }}
+          >
+            Get a quote
+          </ShinyButton>
         </div>
       </MobileMenu>
     </header>
@@ -263,9 +352,9 @@ function MobileMenuRowLink({
     <Link
       href={href}
       onClick={onNavigate}
-      className="flex w-full flex-row gap-x-1.5 rounded-sm px-1.5 py-1 text-foreground hover:bg-accent hover:text-accent-foreground"
+      className="flex w-full flex-row gap-x-1.5 rounded-sm px-1 py-0.5 text-foreground hover:bg-accent hover:text-accent-foreground"
     >
-      <div className="flex aspect-square size-11 shrink-0 items-center justify-center rounded-xl border border-neutral-300 bg-neutral-100 text-foreground ring-1 ring-neutral-200 ring-offset-2">
+      <div className="flex aspect-square size-10 shrink-0 items-center justify-center rounded-xl ">
         {children}
       </div>
       <div className="flex flex-col justify-center">
@@ -282,7 +371,7 @@ function MobileMenu({ open, children, className, ...props }: MobileMenuProps) {
     <div
       id="mobile-menu"
       className={cn(
-        "fixed inset-x-0 bottom-0 top-14 z-40 flex flex-col overflow-hidden border-y bg-background/95 backdrop-blur-lg supports-backdrop-filter:bg-background/50 md:hidden",
+        "fixed inset-x-0 bottom-0 top-14 z-40 flex flex-col overflow-hidden border-y bg-white md:hidden",
       )}
     >
       <div
@@ -306,11 +395,11 @@ function ListItem({ title, description, className, href, serviceSlug }: LinkItem
       <Link
         href={href}
         className={cn(
-          "flex w-full flex-row gap-x-1.5 rounded-sm px-1.5 py-1 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground data-[active=true]:hover:bg-accent data-[active=true]:focus:bg-accent",
+          "flex w-full flex-row gap-x-1.5 rounded-sm px-1 py-0.5 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground data-[active=true]:hover:bg-accent data-[active=true]:focus:bg-accent",
           className,
         )}
       >
-        <div className="flex aspect-square size-11 shrink-0 items-center justify-center rounded-xl border border-neutral-300 bg-neutral-100 text-foreground ring-1 ring-neutral-200 ring-offset-2">
+        <div className="flex aspect-square size-10 shrink-0 items-center justify-center rounded-xl ">
           {serviceSlug ? (
             <ServiceMenuIcon slug={serviceSlug} />
           ) : hasCompanyMenuIcon(href) ? (

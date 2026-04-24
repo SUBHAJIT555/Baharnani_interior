@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import * as React from "react";
+import { motion } from "motion/react";
+import GradientText from "@/components/ui/GradientText";
+import ShinyText from "@/components/ui/ShinyText";
 
 const cards = [
   {
@@ -20,80 +22,171 @@ const cards = [
       "https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=1400",
     alt: "Client meeting in a contemporary workspace",
   },
-];
+] as const;
+
+const sharedGrid = {
+  backgroundImage:
+    "linear-gradient(to right, #e7e5e4 1px, transparent 1px), linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)",
+  backgroundSize: "1px 1px",
+  backgroundPosition: "0 0, 0 0",
+  maskComposite: "intersect" as const,
+  WebkitMaskComposite: "source-in" as const,
+};
+
+const mobileGridStyle: React.CSSProperties = {
+  ...sharedGrid,
+  maskImage:
+    "repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px), repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px), radial-gradient(ellipse 100% 80% at 50% 0%, #000 50%, transparent 90%)",
+  WebkitMaskImage:
+    "repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px), repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px), radial-gradient(ellipse 100% 80% at 50% 0%, #000 50%, transparent 90%)",
+};
+
+const desktopGridStyle: React.CSSProperties = {
+  ...sharedGrid,
+  maskImage:
+    "repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px), repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px), radial-gradient(ellipse 82% 80% at 100% 100%, #000 50%, transparent 90%)",
+  WebkitMaskImage:
+    "repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px), repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px), radial-gradient(ellipse 82% 80% at 100% 100%, #000 50%, transparent 90%)",
+};
+
+const desktopGridStyleLeft: React.CSSProperties = {
+  ...sharedGrid,
+  maskImage:
+    "repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px), repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px), radial-gradient(ellipse 82% 80% at 0% 100%, #000 50%, transparent 90%)",
+  WebkitMaskImage:
+    "repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px), repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px), radial-gradient(ellipse 82% 80% at 0% 100%, #000 50%, transparent 90%)",
+};
+
+function StickyCard({
+  index,
+  children,
+}: {
+  index: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <motion.div
+      layout="position"
+      style={{ top: 126 + index * 20, z: index * 10, backfaceVisibility: "hidden" }}
+      className="sticky"
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function WhyItsMatterHome() {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Scroll-linked stacked-card effect (card 2 rises and overlaps card 1)
-  const secondCardY = useTransform(scrollYProgress, [0.48, 0.9], [700, 0]);
-  const secondCardScale = useTransform(scrollYProgress, [0.48, 0.9], [0.97, 1]);
-  const secondCardOpacity = 1;
-  const firstCardScale = useTransform(scrollYProgress, [0.62, 0.94], [1, 0.98]);
-  const firstCardOpacity = useTransform(scrollYProgress, [0.68, 0.96], [1, 0.96]);
-
   return (
-    <section ref={sectionRef} className="relative h-auto w-full bg-background px-4 py-14 sm:px-6 md:h-[260vh] lg:px-32">
-      <div className="w-full md:hidden">
-        <h2 className="mb-8 font-recia text-3xl font-semibold text-zinc-900">Why It Matters</h2>
-        <div className="space-y-6">
-          <article className="grid gap-5 rounded-3xl border border-zinc-300 bg-neutral-100 p-4 ring-1 ring-zinc-200 ring-offset-2 md:ring-offset-4">
-            <div className="overflow-hidden rounded-2xl">
-              <img src={cards[0].image} alt={cards[0].alt} className="h-full min-h-[220px] w-full object-cover" />
-            </div>
-            <div className="flex flex-col justify-center">
-              <h3 className="font-recia text-4xl font-semibold leading-tight text-zinc-900">{cards[0].title}</h3>
-              <p className="mt-3 text-base leading-8 text-zinc-700">{cards[0].description}</p>
-            </div>
-          </article>
-
-          <article className="grid gap-5 rounded-3xl border border-black/10 bg-[#e65b2a] p-4 text-white ring-1 ring-[#e65b2a] ring-offset-2 md:ring-offset-4">
-            <div className="flex flex-col justify-center">
-              <h3 className="font-recia text-4xl font-semibold leading-tight">{cards[1].title}</h3>
-              <p className="mt-3 text-base leading-8 text-white/90">{cards[1].description}</p>
-            </div>
-            <div className="overflow-hidden rounded-2xl">
-              <img src={cards[1].image} alt={cards[1].alt} className="h-full min-h-[220px] w-full object-cover" />
-            </div>
-          </article>
+    <section id="why-it-matters" className="scroll-mt-24 bg-white px-4 py-14 sm:px-6 md:py-20">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="w-full md:hidden">
+          <h2 className="mb-3 text-3xl font-semibold text-zinc-900">Why It Matters</h2>
+          <p className="mb-8 text-base font-medium leading-relaxed text-zinc-600">
+          Design That Drives Business Outcomes
+          </p>
+          <div className="space-y-6">
+            {cards.map((card, index) => (
+              <article
+                key={`${card.title}-${index}`}
+                className="relative grid gap-5 overflow-hidden rounded-3xl border border-zinc-300 bg-white p-4 ring-1 ring-zinc-200 ring-offset-2"
+              >
+                <div className="pointer-events-none absolute inset-0 z-0" style={mobileGridStyle} />
+                <div className="overflow-hidden rounded-2xl">
+                  <img src={card.image} alt={card.alt} className="relative z-10 h-full min-h-[220px] w-full object-cover" />
+                </div>
+                <div className="relative z-10 flex h-full flex-col py-3">
+                  <h3 className="text-2xl font-semibold leading-tight">
+                    <ShinyText
+                      text={card.title}
+                      speed={2.1}
+                      delay={0.2}
+                      color="#111827"
+                      shineColor="#64748b"
+                      spread={125}
+                      direction="left"
+                      className="inline"
+                    />
+                  </h3>
+                  <p className="mt-4 text-base font-medium leading-relaxed text-zinc-900">{card.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="sticky top-20 hidden w-full md:block">
-        <h2 className="mb-8 font-recia text-3xl font-semibold text-zinc-900 md:text-5xl">Why It Matters</h2>
+        <div className="hidden md:block">
+          <div className="mx-auto mb-8 max-w-2xl text-center">
+            
+            <h2 className="mt-2 text-4xl font-bold text-zinc-900 md:text-5xl">
+            Why It Matters
+            </h2>
+            <p className="mt-4 text-lg font-medium leading-relaxed text-zinc-600">
+            Design That Drives Business Outcomes
+            </p>
+          </div>
 
-        <div className="relative min-h-[78vh]">
-          <motion.article
-            style={{ scale: firstCardScale, opacity: firstCardOpacity }}
-            className="grid gap-6 rounded-3xl border border-zinc-300 bg-neutral-100 ring-1 ring-zinc-200 ring-offset-2 md:ring-offset-4 p-4  md:grid-cols-2 md:p-7"
-          >
-            <div className="overflow-hidden rounded-xl">
-              <img src={cards[0].image} alt={cards[0].alt} className="h-full min-h-[260px] w-full object-cover" />
-            </div>
-            <div className="flex flex-col justify-center">
-              <h3 className="font-recia text-3xl font-semibold leading-tight text-zinc-900 md:text-5xl">
-                {cards[0].title}
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-zinc-700 md:text-3xl lg:mt-14">{cards[0].description}</p>
-            </div>
-          </motion.article>
-
-          <motion.article
-            style={{ y: secondCardY, scale: secondCardScale, opacity: secondCardOpacity }}
-            className="absolute inset-x-0 top-0 z-10 grid gap-6 rounded-3xl border border-black/10 bg-[#e65b2a] p-4 text-white ring-1 ring-[#e65b2a] ring-offset-2 md:ring-offset-4 md:grid-cols-2 md:p-7"
-          >
-            <div className="flex flex-col justify-center">
-              <h3 className="font-recia text-3xl font-semibold leading-tight md:text-5xl">{cards[1].title}</h3>
-              <p className="mt-4 text-base leading-relaxed text-white/90 md:text-3xl lg:mt-14">{cards[1].description}</p>
-            </div>
-            <div className="overflow-hidden rounded-xl">
-              <img src={cards[1].image} alt={cards[1].alt} className="h-full min-h-[260px] w-full object-cover" />
-            </div>
-          </motion.article>
+          <div className="relative space-y-16 pb-24 md:pb-28" style={{ perspective: "1000px" }}>
+            {cards.map((card, index) => {
+              const reverseLayout = index % 2 === 1;
+              return (
+                <StickyCard key={card.title} index={index}>
+                  <article className="relative grid gap-6 overflow-hidden rounded-3xl border border-zinc-300 bg-white p-4 ring-1 ring-zinc-200 ring-offset-2 shadow-lg md:grid-cols-2 md:p-7 md:ring-offset-6">
+                    <div
+                      className="pointer-events-none absolute inset-0 z-0"
+                      style={reverseLayout ? desktopGridStyleLeft : desktopGridStyle}
+                    />
+                    {reverseLayout ? (
+                      <>
+                        <div className="relative z-10 flex h-full flex-col py-4 md:py-6">
+                          <h3 className="text-left text-3xl font-semibold leading-tight md:text-5xl">
+                            <ShinyText
+                              text={card.title}
+                              speed={2.1}
+                              delay={0.2}
+                              color="#111827"
+                              shineColor="#64748b"
+                              spread={125}
+                              direction="left"
+                              className="inline"
+                            />
+                          </h3>
+                          <p className="mt-6 text-base leading-relaxed font-medium text-zinc-700 md:mt-auto md:text-2xl">
+                            {card.description}
+                          </p>
+                        </div>
+                        <div className="relative z-10 overflow-hidden rounded-xl">
+                          <img src={card.image} alt={card.alt} className="h-full min-h-[260px] w-full object-cover" />
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="relative z-10 overflow-hidden rounded-xl">
+                          <img src={card.image} alt={card.alt} className="h-full min-h-[260px] w-full object-cover" />
+                        </div>
+                        <div className="relative z-10 flex h-full flex-col py-4 md:py-6">
+                          <h3 className="text-left text-3xl font-semibold leading-tight md:text-5xl">
+                            <ShinyText
+                              text={card.title}
+                              speed={2.1}
+                              delay={0.2}
+                              color="#111827"
+                              shineColor="#64748b"
+                              spread={125}
+                              direction="left"
+                              className="inline"
+                            />
+                          </h3>
+                          <p className="mt-6 text-base leading-relaxed font-medium text-zinc-700 md:mt-auto md:text-2xl">
+                            {card.description}
+                          </p>
+                        </div>
+                      </>
+                    )}
+                  </article>
+                </StickyCard>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

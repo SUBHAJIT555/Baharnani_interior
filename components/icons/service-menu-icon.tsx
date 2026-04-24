@@ -8,7 +8,7 @@ const common: React.SVGProps<SVGSVGElement> = {
   strokeWidth: 2,
   strokeLinecap: "round",
   strokeLinejoin: "round",
-  className: "size-6 text-foreground",
+  className: "size-5 text-foreground",
   "aria-hidden": true,
 };
 
@@ -19,6 +19,7 @@ function Icon({ children }: { children: React.ReactNode }) {
 /** Tabler-outline paths — services mega menu / mobile list */
 export function ServiceMenuIcon({ slug }: { slug: string }) {
   switch (slug) {
+    case "villa-interior-design":
     case "villa-interior-design-dubai":
       return (
         <Icon>
@@ -27,6 +28,7 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39" />
         </Icon>
       );
+    case "apartment-interior-design":
     case "apartment-interior-design-dubai":
       return (
         <Icon>
@@ -39,6 +41,7 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M9 18l0 .01" />
         </Icon>
       );
+    case "office-interior-design":
     case "office-interior-design-dubai":
       return (
         <Icon>
@@ -48,6 +51,7 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M3 13a20 20 0 0 0 18 0" />
         </Icon>
       );
+    case "luxury-interior-design":
     case "luxury-interior-design-dubai":
       return (
         <Icon>
@@ -55,6 +59,7 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M10 12l-2 -2.2l.6 -1" />
         </Icon>
       );
+    case "turnkey-fit-out-services":
     case "turnkey-fit-out-services-dubai":
       return (
         <Icon>
@@ -62,12 +67,14 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M15 9h.01" />
         </Icon>
       );
+    case "kitchen-fit-out-services":
     case "kitchen-fit-out-services-dubai":
       return (
         <Icon>
           <path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12m0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
         </Icon>
       );
+    case "bathroom-renovation":
     case "bathroom-renovation-dubai":
       return (
         <Icon>
@@ -77,6 +84,7 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M20 21l-1 -1.5" />
         </Icon>
       );
+    case "joinery-custom-furniture":
     case "joinery-custom-furniture-dubai":
       return (
         <Icon>
@@ -84,6 +92,7 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M18.121 15.293l2.586 -2.586a1 1 0 0 0 0 -1.414l-7.586 -7.586a1 1 0 0 0 -1.414 0l-2.586 2.586a1 1 0 0 0 0 1.414l7.586 7.586a1 1 0 0 0 1.414 0" />
         </Icon>
       );
+    case "ceiling-lighting-solutions":
     case "ceiling-lighting-solutions-dubai":
       return (
         <Icon>
@@ -92,6 +101,7 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M9.7 17l4.6 0" />
         </Icon>
       );
+    case "flooring-tiling-services":
     case "flooring-tiling-services-dubai":
       return (
         <Icon>
@@ -101,6 +111,7 @@ export function ServiceMenuIcon({ slug }: { slug: string }) {
           <path d="M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" />
         </Icon>
       );
+    case "interior-design-marina":
     case "interior-design-dubai-marina":
       return (
         <Icon>

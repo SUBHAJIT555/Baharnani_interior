@@ -14,7 +14,7 @@ function FooterHeading({ id, children }: { id: string; children: React.ReactNode
   return (
     <h2
       id={id}
-      className="border-b border-zinc-200 pb-2 text-[11px] font-semibold font-recia uppercase tracking-[0.2em] text-zinc-900"
+      className="border-b border-zinc-200 pb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-900"
     >
       {children}
     </h2>
@@ -74,10 +74,10 @@ export function SiteFooter() {
                 <SiteLogoLink className="p-0 hover:opacity-100" imageAlt="Baharnani Interior logo" />
               </div>
               <div>
-                <p className="text-lg font-semibold font-recia tracking-tight text-zinc-950">{COMPANY_NAME}</p>
+                <p className="text-lg font-semibold tracking-tight text-zinc-950">{COMPANY_NAME}</p>
                 <p className="mt-3 max-w-lg text-sm font-medium leading-relaxed text-zinc-600">{COMPANY_TAGLINE}</p>
                 <div className="mt-6 max-w-md rounded-2xl  backdrop-blur-sm">
-                  <p className="text-xs font-semibold uppercase font-recia tracking-[0.18em] text-zinc-800">Newsletter</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-800">Newsletter</p>
                   <p className="mt-2 text-sm text-zinc-600">
                     Get design tips, trend updates, and project insights in your inbox.
                   </p>
@@ -144,7 +144,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-14 border-t border-zinc-200 pt-8 text-center text-xs md:text-sm leading-relaxed text-zinc-600">
-          <p className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-1 gap-y-1 font-switzer">
+          <p className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-1 gap-y-1">
             <span>© {year}</span>{" "}
             <Link
               href="/"

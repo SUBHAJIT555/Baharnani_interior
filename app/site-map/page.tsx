@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 function SitemapSection({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="space-y-3">
-      <h2 className="border-b border-zinc-200 pb-2 text-sm font-semibold font-recia uppercase tracking-wider text-zinc-900">
+      <h2 className="border-b border-zinc-200 pb-2 text-sm font-semibold uppercase tracking-wider text-zinc-900">
         {title}
       </h2>
       <ul className="grid gap-2 sm:grid-cols-2">{children}</ul>
@@ -34,7 +34,7 @@ export default function SiteMapPage() {
   return (
     <div className="space-y-10 pb-8">
       <div className="space-y-2">
-        <h1 className="text-3xl font-semibold font-recia tracking-tight text-zinc-900">Site Map</h1>
+        <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">Site Map</h1>
         <p className="max-w-2xl text-sm text-zinc-600">
           A single index of every public page on this site for quick navigation.
         </p>

@@ -3,34 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ---- Switzer (variable) ---- */
-@font-face {
-  font-family: "Switzer";
-  src: url("/assets/fonts/Switzer-Variable.woff") format("woff");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ---- Recia (variable) ---- */
-@font-face {
-  font-family: "Recia";
-  src: url("/assets/fonts/Recia-Variable.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/*
- * Tailwind font utilities: font-switzer | font-recia
- * Weights (with variable fonts): font-light … font-black as usual.
- *
- * Colors below are neutral placeholders — swap when you share brand tokens.
- */
 @theme inline {
-  --font-switzer: "Switzer", ui-sans-serif, system-ui, sans-serif;
-  --font-recia: "Recia", ui-serif, Georgia, "Times New Roman", serif;
-
   --color-background: #ffffff;
   --color-foreground: #18181b;
   --color-card: #ffffff;
@@ -58,5 +31,5 @@
 }
 
 body {
-  @apply bg-background text-foreground font-switzer antialiased;
+  @apply bg-background text-foreground antialiased;
 }

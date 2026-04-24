@@ -91,7 +91,7 @@ function WhatsAppButton({ isVisible }: { isVisible: boolean }) {
         </svg>
 
         <div className="pointer-events-none invisible absolute bottom-full right-0 mb-2 translate-y-2 opacity-0 transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="whitespace-nowrap rounded-xl border border-gray-200 bg-white px-5 py-3 font-switzer text-sm font-medium text-gray-800 ring ring-neutral-300 ring-offset-2">
+          <div className="whitespace-nowrap rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-800 ring ring-neutral-300 ring-offset-2">
             Connect through WhatsApp for faster response
           </div>
         </div>

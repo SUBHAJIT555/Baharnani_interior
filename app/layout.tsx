@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { FloatingActions } from "@/components/ui/floating-actions";
+
+const geist = Geist({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Villa Interior Design Dubai",
@@ -17,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       {/* suppressHydrationWarning: extensions (e.g. ColorZilla) may inject attrs like cz-shortcut-listen on <body> */}
-      <body className="flex min-h-full flex-col overflow-x-hidden bg-background text-foreground" suppressHydrationWarning>
+      <body
+        className={`${geist.className} flex min-h-full flex-col overflow-x-hidden bg-background text-foreground`}
+        suppressHydrationWarning
+      >
         <div id="page-scroll-threshold" className="absolute top-0 h-px w-px" aria-hidden />
         <SiteHeader />
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 lg:px-8">
