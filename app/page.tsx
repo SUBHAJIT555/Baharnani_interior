@@ -1,6 +1,6 @@
 import { HomeScrollHero } from "@/components/ui/home-scroll-hero";
 import WhyItsMatterHome from "@/components/why-its-matter-home";
-import ServicesHomeOverviewFixed from "@/components/services-home-overview-fixed";
+import ServicesHomeOverviewFixed from "@/components/services-home-overview";
 
 export default function Home() {
   return (
