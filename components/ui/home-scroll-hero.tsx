@@ -73,7 +73,7 @@ export function HomeScrollHero() {
           className="absolute inset-0 z-0"
           style={{
             backgroundImage:
-              "linear-gradient(to right, #e7e5e4 1px, transparent 1px), linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(231, 229, 228, 0.45) 1px, transparent 1px), linear-gradient(to bottom, rgba(231, 229, 228, 0.45) 1px, transparent 1px)",
             backgroundSize: "1px 1px",
             backgroundPosition: "0 0, 0 0",
             maskImage:
@@ -89,7 +89,7 @@ export function HomeScrollHero() {
           <ContainerScroll
             titleComponent={
               <div className="space-y-3 px-4 md:space-y-5">
-                <p className="text-xs font-bold uppercase tracking-[0.24em] sm:text-sm">
+                <p className="text-xs font-extrabold uppercase tracking-[0.24em] sm:text-sm">
                   <GradientText
                     colors={["#0f172a", "#2563eb", "#0f172a", "#1d4ed8", "#0f172a"]}
                     animationSpeed={3}
@@ -99,7 +99,7 @@ export function HomeScrollHero() {
                     yoyo
                     className="inline"
                   >
-                    Moder Interior Design & Fit-Out in Dubai
+                    Interior Design & Fit-Out 
                   </GradientText>
                 </p>
                 <h1 className="mx-auto max-w-5xl text-3xl font-bold leading-tight tracking-tight text-zinc-900 sm:text-4xl md:text-[3.6rem] md:leading-[1.05]">
@@ -116,7 +116,7 @@ export function HomeScrollHero() {
                     className="inline whitespace-pre-line"
                   />
                 </h1>
-                <p className="mx-auto max-w-3xl md:text-2xl text-xl leading-relaxed text-zinc-600">
+                <p className="mx-auto max-w-3xl md:text-xl text-lg leading-relaxed text-zinc-700">
                   Transform your workspace into a productivity-driven environment
                 </p>
               </div>

@@ -1,6 +1,9 @@
 import { HomeScrollHero } from "@/components/ui/home-scroll-hero";
 import WhyItsMatterHome from "@/components/why-its-matter-home";
 import ServicesHomeOverviewFixed from "@/components/services-home-overview";
+import OurProcessHome from "@/components/our-process-home";
+import WhyChooseUsHome from "@/components/why-choose-us-home";
+import HomeCtaSection from "@/components/home-cta-section";
 
 export default function Home() {
   return (
@@ -8,6 +11,9 @@ export default function Home() {
       <HomeScrollHero />
       <WhyItsMatterHome />
       <ServicesHomeOverviewFixed />
+      <OurProcessHome />
+      <WhyChooseUsHome />
+      <HomeCtaSection />
     </div>
   );
 }

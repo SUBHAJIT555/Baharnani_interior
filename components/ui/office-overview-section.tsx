@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import GradientText from "@/components/ui/GradientText";
+import ShinyText from "@/components/ui/ShinyText";
 import Shuffle from "@/components/ui/Shuffle";
 import { ShinyButton } from "@/components/ui/shiny-button";
 
@@ -288,7 +289,7 @@ export function OfficeOverviewSection() {
               <AnimatePresence>
                 {isModalOpen ? (
                   <motion.div
-                    className="fixed inset-0 z-120 grid place-items-center overflow-y-auto bg-black/50 p-4"
+                    className="fixed inset-0 z-120 grid place-items-center overflow-y-auto bg-black/50 backdrop-blur-sm p-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -304,8 +305,21 @@ export function OfficeOverviewSection() {
                     >
                       <div className="mb-6 flex items-start justify-between gap-4">
                         <div>
-                          <h3 className="text-2xl font-semibold text-zinc-900">Talk to Our Experts</h3>
-                          <p className="mt-1 text-sm text-zinc-600">
+                          <h3 className="text-2xl md:text-3xl  font-bold text-zinc-900">
+                            <ShinyText
+                              text="Talk to Our Experts"
+                              speed={2}
+                              delay={0.2}
+                              color="#18181b"
+                              shineColor="#64748b"
+                              spread={100}
+                              direction="left"
+                              yoyo={false}
+                              pauseOnHover={false}
+                              className="inline"
+                            />
+                          </h3>
+                          <p className="mt-1 text-sm text-zinc-800">
                             Share your project details and our team will contact you shortly.
                           </p>
                         </div>
@@ -450,7 +464,7 @@ export function OfficeOverviewSection() {
                         </label>
                         <Button
                           type="submit"
-                          className="h-11 w-full rounded-xl bg-[#0000FF] text-white hover:bg-blue-700"
+                          className="h-11 w-full rounded-full bg-[#0000FF] text-white hover:bg-blue-700"
                           disabled={isSubmitting}
                         >
                           <svg
@@ -475,63 +489,89 @@ export function OfficeOverviewSection() {
                         <div className="my-4 h-px w-full bg-zinc-200" />
 
                         <div className="grid gap-3 sm:grid-cols-2">
-                          <Button
-                            type="button"
-                            className="h-11 w-full rounded-xl bg-[#25d366] text-white hover:bg-[#1ebe5d]"
-                            asChild
+                          <ShinyButton
+                            onClick={() =>
+                              window.open(
+                                "https://wa.me/971500000000?text=Hi%2C%20I%20need%20office%20interior%20design%20consultation.",
+                                "_blank",
+                                "noopener,noreferrer",
+                              )
+                            }
+                            className="w-full"
+                            style={
+                              {
+                                ["--shiny-cta-bg" as string]: "#25d366",
+                                ["--shiny-cta-bg-subtle" as string]: "#1ebe5d",
+                                ["--shiny-cta-fg" as string]: "#ffffff",
+                                ["--shiny-cta-highlight" as string]: "#86efac",
+                                ["--shiny-cta-highlight-subtle" as string]: "#dcfce7",
+                                ["--shiny-cta-dot" as string]: "rgba(255, 255, 255, 1)",
+                                height: "2.75rem",
+                                borderRadius: "50px",
+                                fontSize: "1rem",
+                                fontWeight: 600,
+                              } as React.CSSProperties
+                            }
                           >
-                            <a
-                              href="https://wa.me/971500000000?text=Hi%2C%20I%20need%20office%20interior%20design%20consultation."
-                              target="_blank"
-                              rel="noopener noreferrer"
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="size-4"
+                              aria-hidden
                             >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="size-4"
-                                aria-hidden
-                              >
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-                                <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-                              </svg>
-                              WhatsApp
-                            </a>
-                          </Button>
-                          <Button
-                            type="button"
-                            className="h-11 w-full rounded-xl bg-[#7c3aed] text-white hover:bg-[#6d28d9]"
-                            asChild
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                              <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                            </svg>
+                            WhatsApp
+                          </ShinyButton>
+                          <ShinyButton
+                            onClick={() => {
+                              window.location.href = "tel:+971500000000";
+                            }}
+                            className="w-full"
+                            style={
+                              {
+                                ["--shiny-cta-bg" as string]: "#7c3aed",
+                                ["--shiny-cta-bg-subtle" as string]: "#6d28d9",
+                                ["--shiny-cta-fg" as string]: "#ffffff",
+                                ["--shiny-cta-highlight" as string]: "#c4b5fd",
+                                ["--shiny-cta-highlight-subtle" as string]: "#ede9fe",
+                                ["--shiny-cta-dot" as string]: "rgba(255, 255, 255, 1)",
+                                height: "2.75rem",
+                                borderRadius: "50px",
+                                fontSize: "1rem",
+                                fontWeight: 600,
+                              } as React.CSSProperties
+                            }
                           >
-                            <a href="tel:+971500000000">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="size-4"
-                                aria-hidden
-                              >
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2c-8.072 -.49 -14.51 -6.928 -15 -15a2 2 0 0 1 2 -2" />
-                                <path d="M15 5h6" />
-                                <path d="M18.5 7.5l2.5 -2.5l-2.5 -2.5" />
-                              </svg>
-                              Call to an Expert
-                            </a>
-                          </Button>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="size-4"
+                              aria-hidden
+                            >
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2c-8.072 -.49 -14.51 -6.928 -15 -15a2 2 0 0 1 2 -2" />
+                              <path d="M15 5h6" />
+                              <path d="M18.5 7.5l2.5 -2.5l-2.5 -2.5" />
+                            </svg>
+                            Call to an Expert
+                          </ShinyButton>
                         </div>
                       </form>
                     </motion.div>
